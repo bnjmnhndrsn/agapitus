@@ -1,3 +1,4 @@
 agapitus_env
 *.pyc
 dump.rdb
+__pycache__
