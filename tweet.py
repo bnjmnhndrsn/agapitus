@@ -8,6 +8,7 @@ from db import Session, Post
 
 PETRONAX_API = 'http://petronax.herokuapp.com/api/wikipedia'
 
+#TODO: Deal with leap years
 def generate_date():
     today = date.today()
     year = random.randint(1875, 1990)
@@ -63,6 +64,7 @@ def tweet():
     post = None
     
     try:
+        #TODO: Make this exit if all possible images are posted
         while post is None:
             date = generate_date()
             post = create_post(session, date)
