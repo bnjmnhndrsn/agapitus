@@ -21,7 +21,7 @@ def create_post(session, date):
             page_id=image_data['page_id'],
             image_url=image_data['scaled_url'],
             page_url=image_data['description_url'],
-            title=image_data['title'],
+            title=image_data['title'].replace('File:', ''),
             created_at=datetime.now()
         )
 
@@ -39,8 +39,10 @@ def find_unused_image_data(session, date):
     return None
     
 def tweet_post(post):
-    status = post.title
-    filename = post.title.replace('File:', '')
+    status_beginning = 'Date: {}\nFile: {}'.format(post.date.strftime('%b %d, %Y'), post.title)
+    status_beginning = status_beginning[:270]
+    status = '{}\nSource: {}'.format(status_beginning, post.page_url)
+    filename = post.title
     file_url = post.image_url
     
     C_KEY = os.environ.get('TWITTER_CONSUMER_KEY')

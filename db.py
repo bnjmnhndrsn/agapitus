@@ -5,7 +5,7 @@ from sqlalchemy import create_engine, Column, String, Date, DateTime, Integer
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-engine = create_engine(os.environ['DATABASE_URL'], echo=True)
+engine = create_engine(os.environ['DATABASE_URL'])
 Base = declarative_base()
 
 class Post(Base):
