@@ -16,7 +16,7 @@ class Post(Base):
     page_id = Column(Integer)
     image_url = Column(String)
     page_url = Column(String)
-    description = Column(String)
+    title = Column(String)
     created_at = Column(DateTime)
 
     def __repr__(self):
