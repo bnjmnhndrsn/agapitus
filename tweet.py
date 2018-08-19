@@ -76,6 +76,9 @@ def tweet():
         session.commit()
     except requests.exceptions.HTTPError:
         print('Posting to Twitter failed')
+        return
+    
+    print('Tweet successful')
     
 
 
