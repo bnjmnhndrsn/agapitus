@@ -1,1 +1,2 @@
-tweet: python task.py
+tweet: python script.py
+force_tweet: python script.py --force
