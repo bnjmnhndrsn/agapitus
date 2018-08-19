@@ -13,6 +13,7 @@ class Post(Base):
 
     id = Column(Integer, primary_key=True)
     date = Column(Date)
+    page_id = Column(Integer)
     image_url = Column(String)
     page_url = Column(String)
     description = Column(String)
