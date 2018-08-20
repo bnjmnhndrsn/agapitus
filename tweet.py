@@ -42,7 +42,7 @@ def find_unused_image_data(session, date):
 def tweet_post(post):
     status_beginning = '({}) {}'.format(post.date.strftime('%Y'), post.title)
     status_beginning = status_beginning[:270]
-    status = '{}\n{}'.format(status_beginning, post.page_url)
+    status = '{}\n\n{}'.format(status_beginning, post.page_url)
     filename = post.title
     file_url = post.image_url
     
