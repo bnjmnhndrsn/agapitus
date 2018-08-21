@@ -41,7 +41,7 @@ def find_unused_image_data(session, date):
     
 def tweet_post(post):
     #datestring = '{post_date:%b} {post_date.day}, {post_date:%Y}'.format(post_date=post.date)
-    date_string = '{} years ago today'.format(date.today().year - post.date.year)
+    datestring = '{} years ago today'.format(date.today().year - post.date.year)
     status_beginning = '[{}] {}'.format(datestring, post.title)
     status_beginning = status_beginning[:270]
     status = '{}\n{}'.format(status_beginning, post.page_url)
