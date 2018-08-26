@@ -23,7 +23,8 @@ def create_post(session, date):
             image_url=image_data['scaled_url'],
             page_url=image_data['description_url'],
             title=image_data['title'].replace('File:', ''),
-            created_at=datetime.now()
+            created_at=datetime.now(),
+            description=image_data['description']
         )
 
 def find_unused_image_data(session, date):
@@ -40,11 +41,12 @@ def find_unused_image_data(session, date):
     return None
     
 def tweet_post(post):
-    #datestring = '{post_date:%b} {post_date.day}, {post_date:%Y}'.format(post_date=post.date)
     datestring = '{} years ago today'.format(date.today().year - post.date.year)
-    status_beginning = '[{}] {}'.format(datestring, post.title)
-    status_beginning = status_beginning[:270]
+    status_beginning = '[{}] {}'.format(datestring, post.description)
+    if len(status_beginning) > 267:
+        status_beginning = status_beginning[:270] + '...'
     status = '{}\n{}'.format(status_beginning, post.page_url)
+        
     filename = post.title
     file_url = post.image_url
     
