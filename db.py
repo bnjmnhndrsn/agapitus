@@ -18,6 +18,7 @@ class Post(Base):
     page_url = Column(String)
     title = Column(String)
     created_at = Column(DateTime)
+    description = Column(Text)
 
     def __repr__(self):
         return "<Post(date='%s', image_url='%s')>" % (self.date, self.image_url)
