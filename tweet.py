@@ -32,7 +32,7 @@ def find_unused_image_data(session, date):
     if session.query(Post).filter(Post.date == date).filter(Post.created_at > twenty_four_hours_ago).count():
         return None
         
-    r = requests.get(PETRONAX_API, params={'date': str(date), 'limit': 10})
+    r = requests.get(PETRONAX_API, params={'date': str(date), 'limit': 50, 'include_file_usage_count': True})
     r.raise_for_status()
     for item in r.json():
         if not session.query(Post).filter(Post.page_id == item['page_id']).one_or_none():
