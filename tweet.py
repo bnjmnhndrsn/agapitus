@@ -44,8 +44,9 @@ def tweet_post(post):
     datestring = '{} years ago today'.format(date.today().year - post.date.year)
     trimmed_description = post.description.rstrip()
     status_beginning = '[{}] {}'.format(datestring, trimmed_description)
-    if len(status_beginning) > 267:
-        status_beginning = status_beginning[:267] + '...'
+    if (len(status_beginning) + len(post.page_url)) > 275:
+        available_length = 275 - len(post.page_url)
+        status_beginning = status_beginning[:available_length].rstrip() + '...'
     status = '{}\n{}'.format(status_beginning, post.page_url)
     filename = post.title
     file_url = post.image_url
